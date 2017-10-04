@@ -1,0 +1,9 @@
+version: '3'
+
+services:
+  workspace:
+    build: ./workspace
+    ports:
+      - "3000:3000"
+    #keep container up
+    tty: true
