@@ -13,5 +13,10 @@ $ docker-compose up -d --build
 $ docker exec -it docker_workspace_1 bash
 ```
 
+## Stop running
+```
+$ docker-compose stop
+```
+
 ## Referense
 * [docker-compose build](https://docs.docker.com/compose/reference/build/)
