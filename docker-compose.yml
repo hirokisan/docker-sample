@@ -2,8 +2,7 @@ version: '3'
 
 services:
   workspace:
-    build: ./workspace
+    build: ./workspace #dir
     ports:
       - "3000:3000"
-    #keep container up
-    tty: true
+    tty: true #keep container up
