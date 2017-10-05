@@ -19,4 +19,5 @@ $ docker-compose stop
 ```
 
 ## Referense
-* [docker-compose build](https://docs.docker.com/compose/reference/build/)
+* [docker-compose](https://docs.docker.com/compose/compose-file/)
+* [docker-compose-build](https://docs.docker.com/compose/reference/build/)
