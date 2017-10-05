@@ -8,6 +8,8 @@ RUN yum -y update && yum clean all
 RUN yum install -y vim zsh
 
 # Todo: Add $USER
+ENV user docker
+RUN useradd --create-home --home-dir /home/$user --shell /usr/bin/zsh $user
 
 # Todo: Modify ~/.ssh/config
 
