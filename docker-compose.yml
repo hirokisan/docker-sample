@@ -5,4 +5,6 @@ services:
     build: ./workspace #dir
     ports:
       - "3000:3000"
+      - "10080:22"
     tty: true #keep container up
+    privileged: true
