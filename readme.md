@@ -47,6 +47,11 @@ Host docker.local
 $ ssh docker.local
 ```
 
+## Command snippets
+```
+$ sudo systemctl status/start/stop sshd
+```
+
 ## Referense
 * [docker-compose](https://docs.docker.com/compose/compose-file/)
 * [docker-compose-build](https://docs.docker.com/compose/reference/build/)

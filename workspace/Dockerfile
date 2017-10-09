@@ -23,13 +23,19 @@ CMD ["/sbin/init"]
 RUN yum -y update
 
 # Install devtools
-RUN yum install -y vim zsh
+RUN yum install -y vim zsh git curl
 
-# Install essential tools
+# Install build essential tools
+RUN yum install -y gcc gcc-c++ kernel-devel make
+
+# Install sudo
 RUN yum install -y sudo
 
-# Install firewalld
-RUN yum -y install firewalld
+# Install firewalld (if install firewalld and want to use git or connect to network, need to modify configure)
+#RUN yum -y install firewalld
+
+# Install NetworkManager
+#RUN yum -y install NetworkManager
 
 # Install sshd
 RUN yum -y install openssh-server
@@ -52,6 +58,7 @@ RUN echo "$user ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 ##################
 
 #### Enable SSH ####
+
 USER $user
 ## copy key
 RUN mkdir -m 0700 -p ~/.ssh
@@ -64,8 +71,18 @@ RUN chmod -R 0600 ~/.ssh/*
 USER root
 RUN sed -i 's/UsePAM yes/UsePAM no/g' /etc/ssh/sshd_config
 RUN sed -i 's/PasswordAuthentication yes/PasswordAuthentication no/g' /etc/ssh/sshd_config
+## avoid slow ssh https://www.serverpronto.com/accounts/knowledgebase.php?action=displayarticle&id=16&language=german
+RUN sed -i 's/#UseDNS yes/UseDNS no/g' /etc/ssh/sshd_config
 
 ## Expose ports
 EXPOSE 22
 
 ####################
+
+#### Install dotfiles ####
+
+USER $user
+RUN git clone https://github.com/hirokisan/dotfiles.git ~/dotfiles
+USER root
+
+##########################
