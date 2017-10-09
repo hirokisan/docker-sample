@@ -18,6 +18,11 @@ $ docker exec -it docker_workspace_1 bash
 $ docker-compose stop
 ```
 
+## IP(Docker for Mac)
+```
+127.0.0.1
+```
+
 ## ADD HOST
 ```
 $ sudo sh -c "echo 127.0.0.1 docker.local >> /etc/hosts"
@@ -37,9 +42,9 @@ Host docker.local
 " | cat >> ~/.ssh/config
 ```
 
-## IP(Docker for Mac)
+## Get into container with ssh
 ```
-127.0.0.1
+$ ssh docker.local
 ```
 
 ## Referense
